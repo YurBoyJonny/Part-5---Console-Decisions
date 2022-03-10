@@ -65,14 +65,17 @@ namespace Part_5___Console_Decisions
                         while (diceSide > 6)
                         {
                             Console.WriteLine("What side of the dice do you call?");
-                            int diceSide = Convert.ToInt32(Console.ReadLine());
+                            //int diceSide = Convert.ToInt32(Console.ReadLine());
 
                         }
                         }
 
                 Console.WriteLine("Are you sure you want to choose " + diceSide + " with a bet of $" + bet + "?");
-                Console.ReadLine();
-
+                string answer = Console.ReadLine();
+                if (answer is "yes")
+                    Console.WriteLine("Okay then :)");
+                else if (answer is "no")
+                    Console.WriteLine("Okay then :(");
 
 
             }
