@@ -6,7 +6,7 @@ namespace Part_5___Console_Decisions
     {
         static void Main(string[] args)
         {
-            /////////////////////////////////////////////////////////////////////////// Stages
+            /////////////////////////////////////////////////////////////////////////// STAGES
             {
                 Console.WriteLine("----Stages----");
 
@@ -39,12 +39,9 @@ namespace Part_5___Console_Decisions
                 else if (age <= 12)
                 {
                     Console.WriteLine("Teen");
-
-
-
                 }
             }
-            /////////////////////////////////////////////////////////////////////////// Hurricane
+            /////////////////////////////////////////////////////////////////////////// HURRICANE
             {
                 Console.WriteLine("----Hurricane----");
 
@@ -53,15 +50,32 @@ namespace Part_5___Console_Decisions
 
 
             }
-            /////////////////////////////////////////////////////////////////////////// Dice Game
+            /////////////////////////////////////////////////////////////////////////// DICE GAME
             {
                 Console.WriteLine("----Dice Game----");
+                Double money = 100;
+                Console.WriteLine("You have $" + money + " in your bank account. Let's feed your gambling addiction :)");
 
-            
-            
+                Console.WriteLine("How much do you bet?");
+                Double bet = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("What side of the dice do you call?");
+                int diceSide = Convert.ToInt32(Console.ReadLine());
+                {
+                    if (diceSide > 6)
+                        while (diceSide > 6)
+                        {
+                            Console.WriteLine("What side of the dice do you call?");
+                            int diceSide = Convert.ToInt32(Console.ReadLine());
+
+                        }
+                        }
+
+                Console.WriteLine("Are you sure you want to choose " + diceSide + " with a bet of $" + bet + "?");
+                Console.ReadLine();
+
+
+
             }
-
-
             Console.ReadKey();
         }
     }
