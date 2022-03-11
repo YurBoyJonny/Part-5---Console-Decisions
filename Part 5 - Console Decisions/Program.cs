@@ -6,7 +6,7 @@ namespace Part_5___Console_Decisions
     {
         static void Main(string[] args)
         {
-            /////////////////////////////////////////////////////////////////////////// STAGES
+            //////////////////////////////////////// STAGES ////////////////////////////////////////
             {
                 Console.WriteLine("----Stages----");
 
@@ -41,7 +41,7 @@ namespace Part_5___Console_Decisions
                     Console.WriteLine("Teen");
                 }
             }
-            /////////////////////////////////////////////////////////////////////////// HURRICANE
+            //////////////////////////////////////// HURRICANE ////////////////////////////////////////
             {
                 Console.WriteLine("----Hurricane----");
 
@@ -50,7 +50,7 @@ namespace Part_5___Console_Decisions
 
 
             }
-            /////////////////////////////////////////////////////////////////////////// DICE GAME
+            //////////////////////////////////////// DICE GAME ////////////////////////////////////////
             {
                 Console.WriteLine("----Dice Game----");
                 Double money = 100;
@@ -60,22 +60,20 @@ namespace Part_5___Console_Decisions
                 Double bet = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("What side of the dice do you call?");
                 int diceSide = Convert.ToInt32(Console.ReadLine());
-                {
-                    if (diceSide > 6)
-                        while (diceSide > 6)
-                        {
-                            Console.WriteLine("What side of the dice do you call?");
-                            //int diceSide = Convert.ToInt32(Console.ReadLine());
-
-                        }
-                        }
+                
 
                 Console.WriteLine("Are you sure you want to choose " + diceSide + " with a bet of $" + bet + "?");
                 string answer = Console.ReadLine();
-                if (answer is "yes")
-                    Console.WriteLine("Okay then :)");
-                else if (answer is "no")
-                    Console.WriteLine("Okay then :(");
+                if (answer is "no")
+                    Console.WriteLine("Okay then D:");
+                else
+                    Console.WriteLine("Okay then :D");
+
+
+
+
+
+
 
 
             }
