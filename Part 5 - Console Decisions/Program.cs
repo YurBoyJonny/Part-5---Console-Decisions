@@ -5,33 +5,53 @@ namespace Part_5___Console_Decisions
     {
         static void Main(string[] args)
         {
+            ////////////////////////////////////////////////////////////////// MENU //////////////////////////////////////////////////////////////////
+            {
+                {
+                    Console.WriteLine("Type 1 for STAGES, 2 for HURRICANE, or 3 for DICE GAME.");
+                    int menu = Convert.ToInt32(Console.ReadLine());
+                    if (menu == 1)
+                    {
+                        Console.WriteLine("Stages");
+                    }
+                    else if (menu > 1)
+                    {
+                        Console.WriteLine("Error");
+                    }
+                    else if (menu < 1)
+                    {
+                        Console.WriteLine("Error");
+                    }
+
+                }
+            }
             ////////////////////////////////////////////////////////////////// STAGES //////////////////////////////////////////////////////////////////
             {
                 Console.WriteLine("----Stages----");
                 int age;
                 Console.WriteLine("Enter your age: ");
                 age = Convert.ToInt32(Console.ReadLine());
-                if (age < 0)
+                if (age > 18)
+                {
+                    Console.WriteLine("Adult");
+                }
+                else if (age < 0)
                 {
                     Console.WriteLine("Error");
                 }
                 else if (age <= 5)
                 {
-                    Console.WriteLine("Child");
-                }
-                else if (age < 19)
-                {
                     Console.WriteLine("Toddler");
-                }
-                else if (age > 18)
-                {
-                    Console.WriteLine("Adult");
                 }
                 else if (age <= 10)
                 {
-                    Console.WriteLine("Preteen");
+                    Console.WriteLine("Child");
                 }
                 else if (age <= 12)
+                {
+                    Console.WriteLine("Preteen");
+                }
+                else if (age > 12)
                 {
                     Console.WriteLine("Teen");
                 }
@@ -42,32 +62,46 @@ namespace Part_5___Console_Decisions
                 Console.Write("Enter a hurricane category level out of; 1, 2, 3, 4, 5 ");
                 int userCategory = Convert.ToInt32(Console.ReadLine());
 
-                (category1 >= 64, category1 <= 95);
-
-                DisplayMeasurement(1);
-                DisplayMeasurement(2);
-                DisplayMeasurement(3);
-                DisplayMeasurement(4);
-                DisplayMeasurement(5);
-
-                void DisplayMeasurement(int measurement)
-                {
-                    switch (measurement)
-                    {
-                        case < 1:
-                        case > 5:
-                            Console.WriteLine($"Measured value is {measurement}; out of an acceptable range.");
-                            break;
-
-                        default:
-                            Console.WriteLine($"Measured value is {measurement}.");
-                            break;
-                    }
-                }
+                
 
             }
             ////////////////////////////////////////////////////////////////// DICE GAME //////////////////////////////////////////////////////////////////
             {
+                string diceOne = (@"-----
+|   |
+| o |
+|   |
+-----");
+                string diceTwo = (@"-----
+|o  |
+|   |
+|  o|
+-----
+");
+                string diceThree = (@"-----
+|o  |
+| o |
+|  o|
+-----
+");
+                string diceFour = (@"-----
+|o o|
+|   |
+|o o|
+-----
+");
+                string diceFive = (@"-----
+|o o|
+| o |
+|o o|
+-----
+");
+                string diceSix = (@"-----
+|o o|
+|o o|
+|o o|
+-----
+");
                 Console.WriteLine("----Dice Game----");
                 Double money = 100;
                 Console.WriteLine("You have $" + money + " in your bank account. Let's feed your gambling addiction :)");
@@ -83,18 +117,28 @@ namespace Part_5___Console_Decisions
                     Console.WriteLine("Okay then :)");
 
 
-                double winnings;
+
+                    
+                Console.WriteLine(diceOne);
+                Console.WriteLine(diceTwo);
+                Console.WriteLine(diceThree);
+                Console.WriteLine(diceFour);
+                Console.WriteLine(diceFive);
+                Console.WriteLine(diceSix);
+
+                double winnings = 0;
 
                 double doubles = (bet * 2);
                 double notDouble = (bet * 1.5);
-                double evenSum = ;
-                double oddSum = ;
+                double evenSum = bet;
+                double oddSum = bet;
 
 
                 double moneyLeft = bet +- winnings;
 
                 Console.WriteLine("You have: $" + moneyLeft + " left");
 
+                
 
             }
             Console.ReadKey();
