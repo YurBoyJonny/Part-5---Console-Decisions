@@ -134,29 +134,26 @@ namespace Part_5___Console_Decisions
             Console.WriteLine("You have $" + money + " in your bank account. How Much do you bet?");
             Double bet = Convert.ToDouble(Console.ReadLine());
 
-            if (bet < 0 || bet > 100)
+            if (bet < 0 || bet > money)
             {
                 bet = 0;
             }
 
-            double winnings = 0;
+            double originalSum = money - bet;
             double doubles = (bet * 2);
             double notDouble = (bet * 1.5);
             double evenSum = (bet * 2);
             double oddSum = (bet * 2);
 
-
-            Console.WriteLine("Type 1 for doubles, or 2 for not double.");
-            int outcomeBet1 = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Type 3 for even sum, or 4 for odd sum.");
-            int outcomeBet2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Type 1 for doubles,2 for not double, 3 for even sum, or 4 for odd sum");
+            int outcomeBet = Convert.ToInt32(Console.ReadLine());
 
             Random rnd = new Random();
             int diceRolled1 = rnd.Next(1, 7);
             new Random();
             int diceRolled2 = rnd.Next(1, 7);
-            Console.WriteLine("You got " + diceRolled1 + " and " + diceRolled2);
+            double bothDice = diceRolled1 + diceRolled2;
+            Console.WriteLine("You got " + bothDice);
 
             if (diceRolled1 == 1 || diceRolled2 == 1)
             {
@@ -183,29 +180,33 @@ namespace Part_5___Console_Decisions
                 Console.WriteLine(diceSix);
             }
 
-
-
-            if (outcomeBet1 == 1 && diceRolled1 == diceRolled2)
+            if (diceRolled1 == diceRolled2 && outcomeBet == 1)
             {
                 bet = Convert.ToDouble(doubles);
+                double moneyLeft = doubles + originalSum;
+                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            else if (outcomeBet1 == 2 && diceRolled1 != diceRolled2)
+            if (diceRolled1 != diceRolled2 && outcomeBet == 2)
             {
                 bet = Convert.ToDouble(notDouble);
+                double moneyLeft = notDouble + originalSum;
+                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            if (outcomeBet2 == 3)
+            if (outcomeBet == 3 && (bothDice == 2 || bothDice == 4 || bothDice == 6 || bothDice == 8 || bothDice == 10 || bothDice == 12))
             {
                 bet = Convert.ToDouble(evenSum);
+                double moneyLeft = evenSum + originalSum;
+                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            else if (outcomeBet2 == 4)
-            {
+            if (outcomeBet == 4 && (bothDice == 1 || bothDice == 3 || bothDice == 5 || bothDice == 7 || bothDice == 9 || bothDice == 11))
+            { 
                 bet = Convert.ToDouble(oddSum);
+                double moneyLeft = oddSum + originalSum;
+                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
 
-            double moneyLeft = bet + winnings;
-
-            Console.WriteLine("You have: $" + moneyLeft + " left");
-
+            double moneyLeft1 = money + originalSum;
+            Console.WriteLine("You have: $" + moneyLeft1 + " left");
             Console.ReadKey();
         }
     }
