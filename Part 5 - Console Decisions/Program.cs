@@ -1,13 +1,14 @@
 ﻿using System;
-////////////////////////////////////////////////////////////////// MENU //////////////////////////////////////////////////////////////////
 namespace Part_5___Console_Decisions
 {
     class Program
     {
+        ////////////////////////////////////////////////////////////////// MENU //////////////////////////////////////////////////////////////////
         static void Main(string[] args)
         {
+            int menu = 0;
             Console.WriteLine("Type 1 for STAGES, 2 for HURRICANE, or 3 for DICE GAME.");
-            int menu = Convert.ToInt32(Console.ReadLine());
+            while(!Int32.TryParse(Console.ReadLine(), out menu));
             if (menu == 1)
             {
                 Stages();
@@ -20,11 +21,7 @@ namespace Part_5___Console_Decisions
             {
                 Dice();
             }
-            else if (menu > 3)
-            {
-                Console.WriteLine("Error");
-            }
-            else if (menu < 1)
+            else if (menu < 1 || menu > 3)
             {
                 Console.WriteLine("Error");
             }
@@ -35,7 +32,7 @@ namespace Part_5___Console_Decisions
             Console.WriteLine("----Stages----");
             int age;
             Console.WriteLine("Enter your age: ");
-            age = Convert.ToInt32(Console.ReadLine());
+            while (!Int32.TryParse(Console.ReadLine(), out age)) ;
             if (age > 18)
             {
                 Console.WriteLine("Adult");
@@ -61,13 +58,13 @@ namespace Part_5___Console_Decisions
                 Console.WriteLine("Teen");
             }
         }
-        ////////////////////////////////////////////////////////////////// HURRICANE //////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////// HURRICANE //////////////////////////////////////////////////////////////////
         public static void Hurricane()
         {
             Console.WriteLine("----Hurricane----");
             Console.WriteLine("Enter a hurricane category level out of; 1, 2, 3, 4, 5 ");
-            int userCategory = Convert.ToInt32(Console.ReadLine());
-
+            int userCategory;
+            while(!Int32.TryParse(Console.ReadLine(), out userCategory));
             Console.Write("This hurricane category is ");
             switch (userCategory)
             {
@@ -84,9 +81,10 @@ namespace Part_5___Console_Decisions
                     Console.WriteLine("131-155 mph or 114-135 kt or 210-249 km/hr");
                     break;
                 case 5:
-                    Console.WriteLine("Greater than 155 mph or 135 kt or 249 km/hr");
-                    break;
+                    Console.WriteLine("greater than 155 mph or 135 kt or 249 km/hr");
+                    break; 
                 default:
+                    Console.WriteLine("invalid.");
                     break;
             }
         }
@@ -129,10 +127,10 @@ namespace Part_5___Console_Decisions
 -----
 ");
             Console.WriteLine("----Dice Game----");
-
             Double money = 100;
             Console.WriteLine("You have $" + money + " in your bank account. How Much do you bet?");
-            Double bet = Convert.ToDouble(Console.ReadLine());
+            Double bet;
+            while (!Double.TryParse(Console.ReadLine(), out bet)) ;
 
             if (bet < 0 || bet > money)
             {
@@ -140,20 +138,21 @@ namespace Part_5___Console_Decisions
             }
 
             double originalSum = money - bet;
-            double doubles = (bet * 2);
+            double doubles = (bet * 3);
             double notDouble = (bet * 1.5);
             double evenSum = (bet * 2);
             double oddSum = (bet * 2);
 
-            Console.WriteLine("Type 1 for doubles,2 for not double, 3 for even sum, or 4 for odd sum");
-            int outcomeBet = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Type 1 for doubles, 2 for not double, 3 for even sum, or 4 for odd sum");
+            double outcomeBet;
+            while (!double.TryParse(Console.ReadLine(), out outcomeBet));
 
             Random rnd = new Random();
             int diceRolled1 = rnd.Next(1, 7);
             new Random();
             int diceRolled2 = rnd.Next(1, 7);
+
             double bothDice = diceRolled1 + diceRolled2;
-            Console.WriteLine("You got " + bothDice);
 
             if (diceRolled1 == 1 || diceRolled2 == 1)
             {
@@ -183,32 +182,24 @@ namespace Part_5___Console_Decisions
             if (diceRolled1 == diceRolled2 && outcomeBet == 1)
             {
                 bet = Convert.ToDouble(doubles);
-                double moneyLeft = doubles + originalSum;
-                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            if (diceRolled1 != diceRolled2 && outcomeBet == 2)
+            else if (diceRolled1 != diceRolled2 && outcomeBet == 2)
             {
                 bet = Convert.ToDouble(notDouble);
-                double moneyLeft = notDouble + originalSum;
-                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            if (outcomeBet == 3 && (bothDice == 2 || bothDice == 4 || bothDice == 6 || bothDice == 8 || bothDice == 10 || bothDice == 12))
+            else if ((bothDice == 2 || bothDice == 4 || bothDice == 6 || bothDice == 8 || bothDice == 10 || bothDice == 12) && outcomeBet == 3)
             {
                 bet = Convert.ToDouble(evenSum);
-                double moneyLeft = evenSum + originalSum;
-                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
-            if (outcomeBet == 4 && (bothDice == 1 || bothDice == 3 || bothDice == 5 || bothDice == 7 || bothDice == 9 || bothDice == 11))
-            { 
+            else if ((bothDice == 3 || bothDice == 5 || bothDice == 7 || bothDice == 9 || bothDice == 11) && outcomeBet == 4)
+            {
                 bet = Convert.ToDouble(oddSum);
-                double moneyLeft = oddSum + originalSum;
-                Console.WriteLine("You have: $" + moneyLeft + " left");
             }
+            else
+                bet = 0;
 
-            double moneyLeft1 = money + originalSum;
-            Console.WriteLine("You have: $" + moneyLeft1 + " left");
-            Console.ReadKey();
+            double moneyLeft = bet + originalSum;
+            Console.WriteLine("You have: $" + moneyLeft + " left");
         }
     }
 }
-
